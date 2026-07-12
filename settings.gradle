@@ -1,1 +1,5 @@
 rootProject.name = 'projectH'
+include 'projecth-domain'
+include 'projecth-application'
+include 'projecth-infrastructure'
+include 'projecth-api'
