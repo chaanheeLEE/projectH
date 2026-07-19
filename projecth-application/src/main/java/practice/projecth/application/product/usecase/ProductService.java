@@ -29,7 +29,8 @@ public class ProductService implements ProductUseCase {
                 new Money(price),
                 new Stock(initialStock),
                 ProductStatus.PREPARING,
-                categoryId
+                categoryId,
+                null
         );
         return productRepositoryPort.save(product);
     }

@@ -11,8 +11,9 @@ public class Product {
     private final Stock stock;
     private final ProductStatus status;
     private final Long categoryId;
+    private final Long version;
 
-    public Product(Long id, String name, Money salePrice, Stock stock, ProductStatus status, Long categoryId) {
+    public Product(Long id, String name, Money salePrice, Stock stock, ProductStatus status, Long categoryId, Long version) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("상품 이름은 필수입니다.");
         }
@@ -31,6 +32,7 @@ public class Product {
         this.stock = stock;
         this.status = status;
         this.categoryId = categoryId;
+        this.version = version;
     }
 
     // 재고 차감 비즈니스 로직
@@ -43,7 +45,7 @@ public class Product {
             updatedStatus = ProductStatus.OUT_OF_STOCK;
         }
 
-        return new Product(this.id, this.name, this.salePrice, updatedStock, updatedStatus, this.categoryId);
+        return new Product(this.id, this.name, this.salePrice, updatedStock, updatedStatus, this.categoryId, this.version);
     }
 
     // 재고 추가 비즈니스 로직
@@ -56,7 +58,7 @@ public class Product {
             updatedStatus = ProductStatus.ON_SALE;
         }
 
-        return new Product(this.id, this.name, this.salePrice, updatedStock, updatedStatus, this.categoryId);
+        return new Product(this.id, this.name, this.salePrice, updatedStock, updatedStatus, this.categoryId, this.version);
     }
 
     // 상품 상태 강제 변경 (예: 수동 판매 종료, 판매 개시 등)
@@ -71,6 +73,6 @@ public class Product {
             targetStatus = ProductStatus.OUT_OF_STOCK;
         }
 
-        return new Product(this.id, this.name, this.salePrice, this.stock, targetStatus, this.categoryId);
+        return new Product(this.id, this.name, this.salePrice, this.stock, targetStatus, this.categoryId, this.version);
     }
 }

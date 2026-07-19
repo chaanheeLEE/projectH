@@ -1,5 +1,6 @@
 package practice.projecth.api.product;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import practice.projecth.api.product.dto.ProductResponse;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> registerProduct(@RequestBody RegisterProductRequest request) {
+    public ResponseEntity<ProductResponse> registerProduct(@Valid @RequestBody RegisterProductRequest request) {
         Product registered = productUseCase.registerProduct(
                 request.getName(),
                 request.getPrice(),
@@ -33,7 +34,7 @@ public class ProductController {
     @PatchMapping("/{productId}/status")
     public ResponseEntity<ProductResponse> updateStatus(
             @PathVariable Long productId,
-            @RequestBody UpdateStatusRequest request
+            @Valid @RequestBody UpdateStatusRequest request
     ) {
         Product updated = productUseCase.updateStatus(productId, request.getStatus());
         return ResponseEntity.ok(ProductResponse.from(updated));
@@ -42,7 +43,7 @@ public class ProductController {
     @PostMapping("/{productId}/stock/increase")
     public ResponseEntity<ProductResponse> increaseStock(
             @PathVariable Long productId,
-            @RequestBody StockRequest request
+            @Valid @RequestBody StockRequest request
     ) {
         Product updated = productUseCase.increaseStock(productId, request.getQuantity());
         return ResponseEntity.ok(ProductResponse.from(updated));
@@ -51,7 +52,7 @@ public class ProductController {
     @PostMapping("/{productId}/stock/decrease")
     public ResponseEntity<ProductResponse> decreaseStock(
             @PathVariable Long productId,
-            @RequestBody StockRequest request
+            @Valid @RequestBody StockRequest request
     ) {
         Product updated = productUseCase.decreaseStock(productId, request.getQuantity());
         return ResponseEntity.ok(ProductResponse.from(updated));

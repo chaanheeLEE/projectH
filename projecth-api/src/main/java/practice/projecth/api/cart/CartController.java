@@ -1,5 +1,6 @@
 package practice.projecth.api.cart;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import practice.projecth.api.cart.dto.AddCartItemRequest;
@@ -19,7 +20,7 @@ public class CartController {
     }
 
     @PostMapping
-    public ResponseEntity<CartResponse> addCartItem(@RequestBody AddCartItemRequest request) {
+    public ResponseEntity<CartResponse> addCartItem(@Valid @RequestBody AddCartItemRequest request) {
         Cart cart = cartUseCase.addCartItem(
                 request.getMemberId(),
                 request.getProductId(),
@@ -31,7 +32,7 @@ public class CartController {
     @PatchMapping("/{productId}")
     public ResponseEntity<CartResponse> updateCartItemQuantity(
             @PathVariable Long productId,
-            @RequestBody UpdateCartItemRequest request
+            @Valid @RequestBody UpdateCartItemRequest request
     ) {
         Cart cart = cartUseCase.updateCartItemQuantity(
                 request.getMemberId(),

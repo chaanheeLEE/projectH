@@ -18,7 +18,8 @@ public class ProductMapper {
                 new Money(jpaEntity.getSalePrice()),
                 new Stock(jpaEntity.getStockQuantity()),
                 jpaEntity.getStatus(),
-                jpaEntity.getCategoryId()
+                jpaEntity.getCategoryId(),
+                jpaEntity.getVersion()
         );
     }
 
@@ -32,7 +33,8 @@ public class ProductMapper {
                 domain.getSalePrice().getAmount(),
                 domain.getStock().getQuantity(),
                 domain.getStatus(),
-                domain.getCategoryId()
+                domain.getCategoryId(),
+                domain.getVersion()
         );
     }
 }

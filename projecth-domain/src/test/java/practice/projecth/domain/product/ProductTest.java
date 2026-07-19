@@ -21,7 +21,8 @@ class ProductTest {
                 new Money(BigDecimal.valueOf(10000)),
                 new Stock(10),
                 ProductStatus.ON_SALE,
-                100L
+                100L,
+                null
         );
 
         // when
@@ -42,7 +43,8 @@ class ProductTest {
                 new Money(BigDecimal.valueOf(10000)),
                 new Stock(0),
                 ProductStatus.OUT_OF_STOCK,
-                100L
+                100L,
+                null
         );
 
         // when
@@ -63,7 +65,8 @@ class ProductTest {
                 new Money(BigDecimal.valueOf(10000)),
                 new Stock(5),
                 ProductStatus.ON_SALE,
-                100L
+                100L,
+                null
         );
 
         // when & then
@@ -82,7 +85,8 @@ class ProductTest {
                 new Money(BigDecimal.valueOf(10000)),
                 new Stock(5),
                 ProductStatus.SUSPENDED,
-                100L
+                100L,
+                null
         );
 
         // when

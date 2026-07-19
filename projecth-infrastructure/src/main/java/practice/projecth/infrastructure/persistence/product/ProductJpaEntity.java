@@ -33,12 +33,16 @@ public class ProductJpaEntity {
 
     private Long categoryId;
 
-    public ProductJpaEntity(Long id, String name, BigDecimal salePrice, int stockQuantity, ProductStatus status, Long categoryId) {
+    @Version
+    private Long version;
+
+    public ProductJpaEntity(Long id, String name, BigDecimal salePrice, int stockQuantity, ProductStatus status, Long categoryId, Long version) {
         this.id = id;
         this.name = name;
         this.salePrice = salePrice;
         this.stockQuantity = stockQuantity;
         this.status = status;
         this.categoryId = categoryId;
+        this.version = version;
     }
 }
