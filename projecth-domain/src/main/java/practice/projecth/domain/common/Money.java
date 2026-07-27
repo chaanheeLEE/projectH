@@ -9,6 +9,10 @@ import java.util.Objects;
 public class Money {
     public static final Money ZERO = new Money(BigDecimal.ZERO);
 
+    public static Money wons(long amount) {
+        return new Money(BigDecimal.valueOf(amount));
+    }
+
     private final BigDecimal amount;
 
     public Money(BigDecimal amount) {
@@ -19,6 +23,14 @@ public class Money {
             throw new IllegalArgumentException("금액은 0보다 작을 수 없습니다.");
         }
         this.amount = amount;
+    }
+
+    public boolean isZero() {
+        return this.amount.compareTo(BigDecimal.ZERO) == 0;
+    }
+
+    public boolean isLessThanOrEqualZero() {
+        return this.amount.compareTo(BigDecimal.ZERO) <= 0;
     }
 
     public Money plus(Money money) {
