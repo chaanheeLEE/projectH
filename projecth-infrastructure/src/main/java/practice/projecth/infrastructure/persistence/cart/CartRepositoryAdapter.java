@@ -36,7 +36,7 @@ public class CartRepositoryAdapter implements CartRepositoryPort {
 
     @Override
     public Optional<Cart> findByMemberId(Long memberId) {
-        return springDataCartRepository.findById(memberId)
+        return springDataCartRepository.findByMemberIdWithItems(memberId)
                 .map(cartMapper::toDomain);
     }
 }

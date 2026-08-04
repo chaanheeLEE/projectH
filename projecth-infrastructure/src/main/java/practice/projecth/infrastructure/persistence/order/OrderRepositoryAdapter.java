@@ -26,7 +26,7 @@ public class OrderRepositoryAdapter implements OrderRepositoryPort {
 
     @Override
     public Optional<Order> findById(Long id) {
-        return springDataOrderRepository.findById(id)
+        return springDataOrderRepository.findByIdWithItems(id)
                 .map(orderMapper::toDomain);
     }
 }

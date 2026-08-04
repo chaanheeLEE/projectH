@@ -37,7 +37,7 @@ public class OrderItemJpaEntity {
         this.quantity = quantity;
     }
 
-    public void setOrder(OrderJpaEntity order) {
+    void setOrder(OrderJpaEntity order) {
         this.order = order;
     }
 }
