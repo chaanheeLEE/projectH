@@ -13,6 +13,10 @@ public class Money {
         return new Money(BigDecimal.valueOf(amount));
     }
 
+    public static Money wons(BigDecimal amount) {
+        return new Money(amount);
+    }
+
     private final BigDecimal amount;
 
     public Money(BigDecimal amount) {
